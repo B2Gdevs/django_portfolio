@@ -27,7 +27,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'hd)n)@c18w-07eonrs7j4q3+cy=)ng5yag_v*rj-p78f(8^f%h'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 # DEBUG_PROPAGATE_EXCEPTIONS = True
 
@@ -147,7 +147,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static")
+    os.path.join(BASE_DIR, "static"),
+    os.path.join(BASE_DIR, "live-static-files", "media-root"),
 ]
 
 STATIC_ROOT = os.path.join(BASE_DIR, "live-static-files", "static-root")
@@ -164,6 +165,4 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 # Activate Django-Heroku.
 django_heroku.settings(locals())
 
-from django.core.cache import cache
-
-cache.clear()
+# print(STATIC_ROOT)
