@@ -42,7 +42,7 @@
         <nav class="navbar navbar-b navbar-trans navbar-expand-md fixed-top" id="mainNav" style='background-color:white; padding-bottom:10px; padding-top:10px;'>
             
             <div class="container">
-                  <a class="navbar-brand js-scroll" href="#page-top">Ben's Portfolio</a>
+                  <a class="navbar-brand js-scroll" href="{% url 'home' %}">Ben's Portfolio</a>
                   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDefault"
                     aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation" >
                     <span style="background-color:black"></span>
@@ -115,7 +115,25 @@
             <!-- Row End --> 
          </div>
     </div>
-
+    <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+    <div id="preloader"></div>
+  
+    <!-- JavaScript Libraries -->
+    <script src="{% static 'lib/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'lib/jquery/jquery-migrate.min.js' %}"></script>
+    <!-- <script src="{% static 'lib/popper/popper.min.js' %}"></script> -->
+    <script src="{% static 'lib/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'lib/easing/easing.min.js' %}"></script>
+    <script src="{% static 'lib/counterup/jquery.waypoints.min.js' %}"></script>
+    <script src="{% static 'lib/counterup/jquery.counterup.js' %}"></script>
+    <script src="{% static 'lib/owlcarousel/owl.carousel.min.js' %}"></script>
+    <!-- <script src="{% static 'lib/lightbox/js/lightbox.min.js' %}"></script> -->
+    <script src="{% static 'lib/typed/typed.min.js' %}"></script>
+    <!-- Contact Form JavaScript File -->
+    <!-- <script src="{% static 'contactform/contactform.js' %}"></script> -->
+  
+    <!-- Template Main Javascript File -->
+    <script src="{% static 'js/main.js' %}"></script>
   </body>
 </html>
 
