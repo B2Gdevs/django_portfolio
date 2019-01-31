@@ -28,9 +28,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'hd)n)@c18w-07eonrs7j4q3+cy=)ng5yag_v*rj-p78f(8^f%h'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+# DEBUG_PROPAGATE_EXCEPTIONS = True
+
+ALLOWED_HOSTS = ['*']
 
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_HOST_USER = "benjamingarrard5279@gmail.com"
@@ -100,9 +102,9 @@ WSGI_APPLICATION = 'portfolio_site.wsgi.application'
 #     }
 # }
 
-dotenv_file = os.path.join(BASE_DIR, ".env")
-if os.path.isfile(dotenv_file):
-    dotenv.load_dotenv(dotenv_file)
+# dotenv_file = os.path.join(BASE_DIR, ".env")
+# if os.path.isfile(dotenv_file):
+#     dotenv.load_dotenv(dotenv_file)
 
 # load database from the DATABASE_URL environment variable
 DATABASES = {}
