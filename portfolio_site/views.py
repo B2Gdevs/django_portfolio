@@ -54,7 +54,7 @@ def contact(request):
         body = format_email(form.cleaned_data['subject'], form.cleaned_data['email'], form.cleaned_data['message'])
 
 
-        sg = sendgrid.SendGridAPIClient(apikey=os.environ.get('SENDGRID_API_KEY'))
+        sg = sendgrid.SendGridAPIClient(apikey=os.environ.get('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'))
         from_email = Email(form.cleaned_data['email'])
         subject = form.cleaned_data['subject']
         to_email = Email(settings.EMAIL_HOST_USER)

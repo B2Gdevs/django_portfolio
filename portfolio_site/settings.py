@@ -33,12 +33,6 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
-EMAIL_HOST = "smtp.gmail.com"
-EMAIL_HOST_USER = "benjamingarrard5279@gmail.com"
-EMAIL_HOST_PASSWORD = "Blazer12"
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -57,7 +51,6 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
