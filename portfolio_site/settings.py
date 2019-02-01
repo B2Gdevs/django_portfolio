@@ -52,10 +52,12 @@ INSTALLED_APPS = [
     'project',
     #3rd party
     'crispy_forms',
+    'storages',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -88,22 +90,6 @@ WSGI_APPLICATION = 'portfolio_site.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'portfoliodb',
-#         'USER': 'Ben',
-#         'PASSWORD':'getshwifty',
-#         'HOST':'localhost',
-#         'PORT': '5432',
-#         'CONN_MAX_AGE': '500',
-#     }
-# }
-
-# dotenv_file = os.path.join(BASE_DIR, ".env")
-# if os.path.isfile(dotenv_file):
-#     dotenv.load_dotenv(dotenv_file)
 
 # load database from the DATABASE_URL environment variable
 DATABASES = {}
@@ -156,11 +142,44 @@ MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media_cdn")
 
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+# STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # Activate Django-Heroku.
 django_heroku.settings(locals())
 
-# print(STATIC_ROOT)
+# Amazon Web Services Configuration
+AWS_STORAGE_BUCKET_NAME = 'portfolio52791'
+AWS_ACCESS_KEY_ID = 'AKIAJC7LODTN5TB2BNJA'
+AWS_SECRET_ACCESS_KEY = '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'
+
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+
+AWS_FILE_EXPIRE = 200
+AWS_PRELOAD_METADATA = True
+AWS_QUERYSTRING_AUTH = True
+
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+S3DIRECT_REGION = 'us-east-1'
+S3_URL = '//%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
+MEDIA_URL = '//%s.s3.amazonaws.com/media/' % AWS_STORAGE_BUCKET_NAME
+MEDIA_ROOT = MEDIA_URL
+STATIC_URL = S3_URL + 'static/'
+ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
+
+
+AWS_AUTO_CREATE_BUCKET = True
+# import datetime
+
+# two_months = datetime.timedelta(days=61)
+# date_two_months_later = datetime.date.today() + two_months
+# expires = date_two_months_later.strftime("%A, %d %B %Y 20:00:00 GMT")
+
+# AWS_HEADERS = { 
+# 	'Expires': expires,
+# 	'Cache-Control': 'max-age=%d' % (int(two_months.total_seconds()), ),
+# }
+
+CORS_ORIGIN_ALLOW_ALL = True  
