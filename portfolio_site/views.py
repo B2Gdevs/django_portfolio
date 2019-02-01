@@ -33,7 +33,16 @@ def detail(request, project_id):
         max_num = len(projects.all())
     else:
         max_num = 4
-    project_indices = [random.randint(1, len(projects.all())) for i in range(max_num)] 
+
+    project_indices = []
+
+    for i in range(max_num):
+        num = random.randint(1, len(projects.all()))
+        while num in project_indices:
+            num = random.randint(1, len(projects.all()))
+            
+        project_indices.append(num)
+    # project_indices = [random.randint(1, len(projects.all())) for i in range(max_num)] 
     
     projects = [get_object_or_404(Project, pk=i) for i in project_indices]
     context = {'project': project,
