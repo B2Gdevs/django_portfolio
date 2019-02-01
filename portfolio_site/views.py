@@ -7,6 +7,12 @@ from portfolio_site.utils import format_email
 from portfolio_site.forms import ContactForm
 import random
 
+import sendgrid
+import os
+from sendgrid.helpers.mail import *
+
+
+
 def home(request):
 
     skills = Skill.objects
@@ -45,9 +51,21 @@ def contact(request):
 
     if form.is_valid():
         to = [settings.EMAIL_HOST_USER]
+        body = format_email(form.cleaned_data['subject'], form.cleaned_data['email'], form.cleaned_data['message'])
 
-        message = format_email(form.cleaned_data['subject'], form.cleaned_data['email'], form.cleaned_data['message'])
-        send_mail(form.cleaned_data['subject'], message, form.cleaned_data['email'],to)
+
+        sg = sendgrid.SendGridAPIClient(apikey=os.environ.get('SENDGRID_API_KEY'))
+        from_email = Email(form.cleaned_data['email'])
+        subject = form.cleaned_data['subject']
+        to_email = Email(settings.EMAIL_HOST_USER)
+        content = Content("text/plain", body)
+        mail = Mail(from_email, subject, to_email, content)
+        # response = sg.client.mail.send.post(request_body=mail.get())
+        # print(response.status_code)
+        # print(response.body)
+        # print(response.headers)
+        
+        # send_mail(form.cleaned_data['subject'], body, form.cleaned_data['email'],to)
         messages.success(request, "Thanks for contacting me! I will get in touch as quickly as I can.")
 
     return render(request, "contact.html", context)
