@@ -60,7 +60,7 @@ def contact(request):
         to_email = Email(settings.EMAIL_HOST_USER)
         content = Content("text/plain", body)
         mail = Mail(from_email, subject, to_email, content)
-        # response = sg.client.mail.send.post(request_body=mail.get())
+        response = sg.client.mail.send.post(request_body=mail.get())
         # print(response.status_code)
         # print(response.body)
         # print(response.headers)
