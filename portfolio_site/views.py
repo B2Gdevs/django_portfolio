@@ -61,9 +61,9 @@ def contact(request):
         content = Content("text/plain", body)
         mail = Mail(from_email, subject, to_email, content)
         response = sg.client.mail.send.post(request_body=mail.get())
-        # print(response.status_code)
-        # print(response.body)
-        # print(response.headers)
+        print(response.status_code)
+        print(response.body)
+        print(response.headers)
         
         # send_mail(form.cleaned_data['subject'], body, form.cleaned_data['email'],to)
         messages.success(request, "Thanks for contacting me! I will get in touch as quickly as I can.")
