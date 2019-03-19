@@ -143,9 +143,9 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 django_heroku.settings(locals())
 
 # Amazon Web Services Configuration
-AWS_STORAGE_BUCKET_NAME = 'portfolio52791'
-AWS_ACCESS_KEY_ID = 'AKIAJC7LODTN5TB2BNJA'
-AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = os.environ["AWS_STORAGE_BUCKET_NAME"]
+AWS_ACCESS_KEY_ID = os.environ["AWS_ACCESS_KEY_ID"]
+AWS_SECRET_ACCESS_KEY = os.environ["AWS_SECRET_ACCESS_KEY"]
 
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 
@@ -164,15 +164,5 @@ ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
 
 
 AWS_AUTO_CREATE_BUCKET = True
-# import datetime
-
-# two_months = datetime.timedelta(days=61)
-# date_two_months_later = datetime.date.today() + two_months
-# expires = date_two_months_later.strftime("%A, %d %B %Y 20:00:00 GMT")
-
-# AWS_HEADERS = { 
-# 	'Expires': expires,
-# 	'Cache-Control': 'max-age=%d' % (int(two_months.total_seconds()), ),
-# }
 
 CORS_ORIGIN_ALLOW_ALL = True  

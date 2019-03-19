@@ -24,11 +24,11 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/', general_views.home, name='home'),
     path('', general_views.home, name='home'),
-    path('project/<int:project_id>', general_views.detail, name='project_detail'),
+    path('project/<int:project_id>', general_views.detail,
+         name='project_detail'),
     # path('contact/', general_views.contact, name='contact')
-    path('contact/', general_views.home, name='contact') # this is a temporary holder.
+    path('contact/', general_views.home, name='contact')
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-

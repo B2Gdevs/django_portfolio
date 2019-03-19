@@ -1,7 +1,8 @@
 import boto3
 
-AWS_ACCESS_KEY_ID = 'AKIAJC7LODTN5TB2BNJA'
-AWS_SECRET_ACCESS_KEY = 'b7EONhPf8I+Ia/eVeEFp1b2YuKLEgcNo9F6rOjQr'
+
+AWS_ACCESS_KEY_ID = 'dummy'
+AWS_SECRET_ACCESS_KEY = 'dummy'
 
 s3 = boto3.resource(
     's3',
