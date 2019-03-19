@@ -5,6 +5,7 @@ from django.shortcuts import render, get_object_or_404
 # from portfolio_site.utils import format_email
 from project.models import Skill, Project
 from portfolio_site.forms import ContactForm
+from summaries.models import Summary
 import random
 
 # import sendgrid
@@ -34,9 +35,11 @@ def home(request):
     """
     skills = Skill.objects
     projects = Project.objects
+    summary = Summary.objects.first()
 
     context = {'skills': skills,
-               'projects': projects}
+               'projects': projects,
+               'summary': summary}
 
     return render(request, 'base.html', context)
 
