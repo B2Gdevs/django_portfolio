@@ -1,5 +1,5 @@
 from django.contrib import admin
-from models import Summary
+from .models import Summary
 
 class SummaryAdmin(admin.ModelAdmin):
     list_display = ('about_me', 'education')

@@ -12,9 +12,12 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 
 import os
 import django_heroku
-import dotenv
 import dj_database_url
 
+try:
+    import local_setup
+except ModuleNotFoundError as e:
+    print(e)
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -24,7 +27,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'hd)n)@c18w-07eonrs7j4q3+cy=)ng5yag_v*rj-p78f(8^f%h'
+SECRET_KEY = os.environ["SECRET_KEY"] 
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -44,7 +47,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # My apps
     'project',
-    #3rd party
+    'summaries',
+    # 3rd party
     'crispy_forms',
     'storages',
 ]

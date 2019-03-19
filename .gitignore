@@ -1,4 +1,13 @@
+dragon.PNG
+VR_development.jpg
+Academic Transcript.pdf
+portfolio_designs/
+local_setup.py
+
+*.exe
 # Created by https://www.gitignore.io
+
+.vscode/
 
 ### OSX ###
 .DS_Store
@@ -40,7 +49,7 @@ develop-eggs/
 dist/
 downloads/
 eggs/
-# lib/
+lib/
 lib64/
 parts/
 sdist/
