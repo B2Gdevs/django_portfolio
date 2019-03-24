@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     # My apps
     'project',
     'summaries',
+    'predictions',
     # 3rd party
     'crispy_forms',
     'storages',
@@ -129,44 +130,43 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
-STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
-]
-
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
-
-MEDIA_URL = "/media/"
-MEDIA_ROOT = os.path.join(BASE_DIR, "media_cdn")
-
-
-# STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-# Activate Django-Heroku.
-django_heroku.settings(locals())
 
-# Amazon Web Services Configuration
-AWS_STORAGE_BUCKET_NAME = os.environ["AWS_STORAGE_BUCKET_NAME"]
-AWS_ACCESS_KEY_ID = os.environ["AWS_ACCESS_KEY_ID"]
-AWS_SECRET_ACCESS_KEY = os.environ["AWS_SECRET_ACCESS_KEY"]
+if not DEBUG:
+    # Activate Django-Heroku.
+    django_heroku.settings(locals())
 
-AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+    # Amazon Web Services Configuration
+    AWS_STORAGE_BUCKET_NAME = os.environ["AWS_STORAGE_BUCKET_NAME"]
+    AWS_ACCESS_KEY_ID = os.environ["AWS_ACCESS_KEY_ID"]
+    AWS_SECRET_ACCESS_KEY = os.environ["AWS_SECRET_ACCESS_KEY"]
 
-AWS_FILE_EXPIRE = 200
-AWS_PRELOAD_METADATA = True
-AWS_QUERYSTRING_AUTH = True
+    AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-S3DIRECT_REGION = 'us-east-1'
-S3_URL = '//%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
-MEDIA_URL = '//%s.s3.amazonaws.com/media/' % AWS_STORAGE_BUCKET_NAME
-MEDIA_ROOT = MEDIA_URL
-STATIC_URL = S3_URL + 'static/'
-ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
+    AWS_FILE_EXPIRE = 200
+    AWS_PRELOAD_METADATA = True
+    AWS_QUERYSTRING_AUTH = True
 
+    STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+    S3DIRECT_REGION = 'us-east-1'
+    S3_URL = '//%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
+    MEDIA_URL = '//%s.s3.amazonaws.com/media/' % AWS_STORAGE_BUCKET_NAME
+    MEDIA_ROOT = MEDIA_URL
+    STATIC_URL = S3_URL + 'static/'
+    ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
+ 
+else:
+    STATIC_URL = '/static/'
+    STATICFILES_DIRS = [
+        os.path.join(BASE_DIR, "static"),
+    ]
+
+    STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+
+    MEDIA_URL = "/media/"
+    MEDIA_ROOT = os.path.join(BASE_DIR, "media_cdn")
 
 AWS_AUTO_CREATE_BUCKET = True
 

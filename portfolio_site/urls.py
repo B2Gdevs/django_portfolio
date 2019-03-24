@@ -19,15 +19,17 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 import portfolio_site.views as general_views
+from project.views import detail as project_detail
+from predictions.views import nba_view 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/', general_views.home, name='home'),
     path('', general_views.home, name='home'),
-    path('project/<int:project_id>', general_views.detail,
-         name='project_detail'),
+    path('project/<int:project_id>', project_detail, name='project_detail'),
     # path('contact/', general_views.contact, name='contact')
-    path('contact/', general_views.home, name='contact')
+    path('contact/', general_views.home, name='contact'),
+    path('predictions/nba', nba_view, name='nba_predictions')
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

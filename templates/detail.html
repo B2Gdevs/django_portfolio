@@ -28,8 +28,9 @@
         <!-- Main Stylesheet File -->
         <link href="{% static 'css/style.css' %}" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
-    <link href="{% static 'css/custom.css' %}" rel="stylesheet">
+        <!-- Custom styles for this template -->
+        <link href="{% static 'css/custom.css' %}" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.0.943/build/pdf.min.js"></script>
 
   </head>
 
@@ -37,37 +38,11 @@
 
 
         <!--/ Nav Star /-->
-        <nav class="navbar navbar-b navbar-trans navbar-expand-md fixed-top" id="mainNav" style='background-color:white; padding-bottom:10px; padding-top:10px;'>
-                <div class="container">
-                  <a class="navbar-brand js-scroll" href="#page-top">Ben's Portfolio</a>
-                  <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDefault"
-                    aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation" >
-                    <span style="background-color:black"></span>
-                    <span style="background-color:black"></span>
-                    <span style="background-color:black"></span>
-                  </button>
-                  <div class="navbar-collapse collapse justify-content-end" id="navbarDefault">
-                    <ul class="navbar-nav">
-                      <li class="nav-item">
-                        <a class="nav-link js-scroll active" href="{% url 'home' %}#home">Home</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link js-scroll" href="{% url 'home' %}#about">About</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link js-scroll" href="{% url 'home' %}#work">Work</a>
-                      </li>
-                      <!-- <li class="nav-item">
-                        <a class="nav-link js-scroll" href="{% url 'contact' %}">Contact</a>
-                      </li> -->
-                    </ul>
-                  </div>
-                </div>
-              </nav>
+        {% include 'nav.html' %}
               <!--/ Nav End /-->
 
     <!-- Page Content -->
-    <div class="container">
+    <div class= "container">
 
       <!-- Portfolio Item Heading -->
       <h1 class="my-4">{{project.project_name}}
@@ -77,6 +52,7 @@
       <div class="row">
 
         <div class="col-md-8">
+
           <img class="img-fluid" src="{{project.image.url}}" alt="">
         </div>
 
@@ -91,6 +67,40 @@
             <li>{{project.technologies_used4}}</li>
           </ul>
         </div>
+        
+        <!-- {% if project.pdf_presentation %}
+        <div class="col-mid-12 col-xs-12 col-lg-12 " id="canvas-holder">
+          <h2 class="my-2">PDF Presentation</h2>
+          <button type="button" class="btn btn-primary" id="pagination-left">Previous</button>
+          <canvas id="pdf-canvas"></canvas>
+          <button type="button" class="btn btn-primary" id="pagination-right">Next</button>
+        </div>
+
+        <script>
+          pdfjsLib.getDocument('{{project.pdf_presentation.url}}').then(doc =>{
+              console.log(`This document has ${doc._pdfInfo.numPages} pages`);
+
+              doc.getPage(1).then(page => {
+                let myCanvas = document.getElementById("pdf-canvas");
+                let context = myCanvas.getContext("2d");
+                let button = document.getElementById("pagination-left");
+                let viewport = page.getViewport(1);
+                let scale = button.clientWidth / viewport.width;
+                viewport = page.getViewport(scale);
+                
+
+                myCanvas.width = viewport.width;
+                myCanvas.height = viewport.height;
+
+                page.render({
+                  canvasContext: context,
+                  viewport: viewport
+                });
+
+              })
+          });
+          </script>
+        {% endif %} -->
 
       </div>
       <!-- /.row -->
@@ -101,7 +111,7 @@
       <div class="row">
 
         {% for project_ in projects%}
-        <div class="col-md-3 col-sm-6 mb-4">
+        <div class="col-md-3 col-sm-6 mb-4 col-lg-3">
           <a href="{{project_.id}}">
             <img class="img-fluid" src="{{project_.image.url}}" alt="">
           </a>
