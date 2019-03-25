@@ -20,6 +20,9 @@ except ModuleNotFoundError as e:
     print(e)
     print("If viewing this error onn Heroku then everything is fine.")
 
+# Activate Django-Heroku.
+django_heroku.settings(locals())
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -146,8 +149,6 @@ if DEBUG:
     MEDIA_ROOT = os.path.join(BASE_DIR, "media_cdn")
 
 else:
-    # Activate Django-Heroku.
-    django_heroku.settings(locals())
 
     # Amazon Web Services Configuration
     AWS_STORAGE_BUCKET_NAME = os.environ["AWS_STORAGE_BUCKET_NAME"]
