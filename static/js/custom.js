@@ -56,7 +56,8 @@ function dataDislcaimer(){
     let disclaimer = document.getElementById("disclaimer");
 
     disclaimer.innerText =
-     `The model has 100% precision and 15% recall on 63380 samples. The predictor is an SVM using the `
-     + `RBF kernel.  There were no optimizations done, just the default parameters in Scikit-learn`
+     `The model has very high precision and very low recall.  The model right now is an SVM using an RBF Kernel.`
+     + `\n\nCross Validation was performed using 10 folds:\n\n`
+     + ` Precision = 0.9895731428344113, Recall = 0.10517347409419361, Accuracy = 0.8548280580923453`
                         
 }
