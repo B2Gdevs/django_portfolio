@@ -133,7 +133,19 @@ USE_TZ = True
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 
-if not DEBUG:
+if DEBUG:
+
+    STATIC_URL = '/static/'
+    STATICFILES_DIRS = [
+        os.path.join(BASE_DIR, "static"),
+    ]
+
+    STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+
+    MEDIA_URL = "/media/"
+    MEDIA_ROOT = os.path.join(BASE_DIR, "media_cdn")
+
+else:
     # Activate Django-Heroku.
     django_heroku.settings(locals())
 
@@ -156,17 +168,7 @@ if not DEBUG:
     MEDIA_ROOT = MEDIA_URL
     STATIC_URL = S3_URL + 'static/'
     ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
- 
-else:
-    STATIC_URL = '/static/'
-    STATICFILES_DIRS = [
-        os.path.join(BASE_DIR, "static"),
-    ]
 
-    STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
-
-    MEDIA_URL = "/media/"
-    MEDIA_ROOT = os.path.join(BASE_DIR, "media_cdn")
 
 AWS_AUTO_CREATE_BUCKET = True
 
