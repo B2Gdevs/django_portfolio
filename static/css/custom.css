@@ -73,18 +73,10 @@ ul.navbar-nav a.nav-link{
   margin: 0 0 0 0;
 }
 
-/* .prediction-form{
-    margin: 0 auto;
-    text-align: center;
-    border-width: 2px;
-    border-style: solid;
-} */
+#initial-acknowledgement{
+    margin-top: 15px;
+}
 
-/* .form-group{
-    text-align: center;
-    margin: 0 auto;
-    width: 50%;
-} */
 
 #btn-dark-theme{
     background-color: #1E1E1E;
@@ -95,10 +87,41 @@ ul.navbar-nav a.nav-link{
     background-color: #5e5b5b;
 }
 
-#btn-light-theme{
-    /* background-color: #FFFFFF; */
-    border: #1E1E1E 1px;
+.disclaimer-label{
+    display: block;
+    font-weight: bold;
 }
+
+#disclaimer{
+    padding: 15px 10px 15px 10px;
+    border-radius: 20px;
+    background-color: rgba(56, 56, 56, 0.719);
+    margin-top: 15px;
+    color: #FFFFFF;
+}
+
+.prediction-container{
+    padding-top: 25px;
+}
+
+.prediction-false{
+    /* border: black 1px solid; */
+    border-radius: 20px;
+    padding: 20px 20px 20px 20px;
+    background-color: rgba(241, 2, 22, 0.411);
+    color: #1E1E1E;
+    font-size: 18px;
+}
+
+.prediction-true{
+    /* border: black 1px solid; */
+    padding: 20px 20px 20px 20px;
+    background-color: rgba(37, 155, 64, 0.575);
+    color: #1E1E1E;
+    font-size: 18px;
+}
+
+
 
 /*                                ARAGADFASDF                             */
 
