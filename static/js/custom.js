@@ -45,7 +45,7 @@ function normalDisclaimer(){
 
     disclaimer.innerText = 
     `This predicter isn't very good at determining every time a team will be under twenty points in a quarter. ` 
-    + `So it misses a few times where the outcome actually would be that the team would score under 20.  So it`
+    + `So it misses a few times where the outcome actually would be that the team would score under 20.  So it `
     + `is a little difficult to trust the team won't be under twenty.  However, the inverse isn't true.  This `
     + `predictor is very reliable in its true values.  So if it says a team will be under twenty points in the `
     + `quarter then it is more than likely right.  So in better words you can't trust the false values, but you `
