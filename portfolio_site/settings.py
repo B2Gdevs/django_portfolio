@@ -150,8 +150,7 @@ if DEBUG:
     MEDIA_ROOT = os.path.join(BASE_DIR, "media_cdn")
 
 else:
-    # Activate Django-Heroku.
-    django_heroku.settings(locals())
+
 
     # Amazon Web Services Configuration
     AWS_STORAGE_BUCKET_NAME = os.environ["AWS_STORAGE_BUCKET_NAME"]
@@ -176,4 +175,7 @@ else:
 
 AWS_AUTO_CREATE_BUCKET = True
 
-CORS_ORIGIN_ALLOW_ALL = True  
+CORS_ORIGIN_ALLOW_ALL = True
+
+# Activate Django-Heroku.
+django_heroku.settings(locals())
