@@ -14,8 +14,7 @@ import os
 import django_heroku
 import dj_database_url
 
-# Activate Django-Heroku.
-django_heroku.settings(locals())
+
 
 try:
     import local_setup
@@ -151,6 +150,8 @@ if DEBUG:
     MEDIA_ROOT = os.path.join(BASE_DIR, "media_cdn")
 
 else:
+    # Activate Django-Heroku.
+    django_heroku.settings(locals())
 
     # Amazon Web Services Configuration
     AWS_STORAGE_BUCKET_NAME = os.environ["AWS_STORAGE_BUCKET_NAME"]
