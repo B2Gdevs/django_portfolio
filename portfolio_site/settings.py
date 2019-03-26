@@ -15,13 +15,11 @@ import django_heroku
 import dj_database_url
 
 
-
 try:
     import local_setup
 except ModuleNotFoundError as e:
     print(e)
     print("If viewing this error onn Heroku then everything is fine.")
-
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -35,7 +33,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ["SECRET_KEY"] 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = bool(os.environ["DEBUG"])
+DEBUG = bool(os.environ.get("DEBUG", "False")
 
 # DEBUG_PROPAGATE_EXCEPTIONS = True
 
