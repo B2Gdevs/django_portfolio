@@ -139,7 +139,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
     ]
 
-if False:
+if DEBUG:
 
     STATIC_URL = '/static/'
     STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
@@ -173,4 +173,4 @@ AWS_AUTO_CREATE_BUCKET = True
 CORS_ORIGIN_ALLOW_ALL = True
 
 # this thing needs to be commented out to  use collectstatic to AWS
-# django_heroku.settings(locals()) 
+django_heroku.settings(locals()) 
