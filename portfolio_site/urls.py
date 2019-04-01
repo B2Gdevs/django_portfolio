@@ -21,7 +21,6 @@ from django.conf.urls.static import static
 import portfolio_site.views as general_views
 from project.views import detail as project_detail
 from predictions.views import nba_view 
-from algorithms.views import binary_search_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -31,8 +30,7 @@ urlpatterns = [
     # path('contact/', general_views.contact, name='contact')
     path('contact/', general_views.home, name='contact'),
     path('predictions/nba', nba_view, name='nba_predictions'),
-    # path('algorithms', include('algorithms.urls'))
-    path('binary_search/', binary_search_view, name='binary_search')
+    path('algorithms', include('algorithms.urls'))
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
