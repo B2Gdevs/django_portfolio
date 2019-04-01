@@ -173,4 +173,4 @@ AWS_AUTO_CREATE_BUCKET = True
 CORS_ORIGIN_ALLOW_ALL = True
 
 # this thing needs to be commented out to  use collectstatic to AWS
-# django_heroku.settings(locals()) 
+# django_heroku.settings(locals()) # useless, it breaks the app.
