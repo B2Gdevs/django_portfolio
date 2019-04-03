@@ -10,3 +10,8 @@ def index_view(request):
 def binary_search_view(request):
     context = {}
     return render(request, 'binarysearch.html', context)
+
+
+def linear_search_view(request):
+    context = {}
+    return render(request, 'linearsearch.html', context)

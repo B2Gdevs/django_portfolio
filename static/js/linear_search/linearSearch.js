@@ -16,40 +16,24 @@ const indexedColor = '#007DFF';
  * @param {*} array
  * @param {number} value
  */
-function binarySearch(array, value) {
-  let first = 0;
-  let last = array.length - 1;
-  let mid = null;
-  let result = false;
+function linearSearch(array, value) {
+  let length = array.length;
+  let index = 0;
 
   // Slowing down the algorithm to be visible to others.
   (function loop() {
     // eslint-disable-next-line consistent-return
     setTimeout(() => {
-      if (mid !== null) {
-        colorSelectedIndex(mid, searchedColor);
-      }
-      if (first <= last && result !== true) {
-        mid = Math.trunc((first + last) / 2);
-        colorSelectedIndex(mid, indexedColor);
-
-        if (array[mid] === value) {
-          colorSelectedIndex(mid, indexedColor);
-          result = true;
-          return result;
-        } else if (value < array[mid]) {
-          colorSelectedIndex(mid, indexedColor);
-          last = mid - 1;
-        } else {
-          colorSelectedIndex(mid, indexedColor);
-          first = mid + 1;
+        if (index !== length){
+            colorSelectedIndex(index, indexedColor);
+            if(array[index] === value){
+                return true;
+            }
+        }else{
+            return false;
         }
-      } else {
-        colorSelectedIndex(mid, searchedColor);
-        result = false;
-        return result;
-      }
-
+        colorSelectedIndex(index, searchedColor);
+        index += 1;
       loop();
     }, 1000);
   })();
@@ -61,7 +45,7 @@ const searchButton = document.getElementById('search-button');
 searchButton.addEventListener('click', () => {
   const number = validateForm('integer-form');
   if (number !== null) {
-    binarySearch(arr, number);
+    linearSearch(arr, number);
   }
 });
 
