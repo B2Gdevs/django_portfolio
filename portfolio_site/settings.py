@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'project',
     'summaries',
     'predictions',
+    'phone_apps',
     # 3rd party
     'crispy_forms',
     'storages',

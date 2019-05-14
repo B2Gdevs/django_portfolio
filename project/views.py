@@ -1,9 +1,14 @@
-from django.shortcuts import render
-from project.models import Skill, Project
+"""
+The views used to showcase projects.
+
+Author: Benjamin Garrard
+Date: 5/12/2019
+"""
 from django.shortcuts import render, get_object_or_404
+from project.models import Project
 import random
 
-# Create your views here.
+
 def detail(request, project_id):
     """
     detail() renders the detail page with data from the projects model.

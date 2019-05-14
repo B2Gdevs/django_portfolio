@@ -30,7 +30,8 @@ urlpatterns = [
     # path('contact/', general_views.contact, name='contact')
     path('contact/', general_views.home, name='contact'),
     path('predictions/nba', nba_view, name='nba_predictions'),
-    path('algorithms', include('algorithms.urls'))
+    path('algorithms', include('algorithms.urls')),
+    path('phone_apps', include('phone_apps.urls'))
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
