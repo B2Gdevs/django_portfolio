@@ -33,6 +33,9 @@
                         <div class="card-body">
                           <h3>Description</h2>
                           <hr/>
+                          {% if app.image %}
+                            <img src="{{app.image.url}}" height="150" width="150">
+                          {% endif %}
                           <div class="card-description">{{app.app_description}}</div>
                           {% if app.android_app_file %}
                             <a class="download-link" href="{{app.android_app_file.url}}" download>
